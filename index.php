@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>sjoerd</title>
+    <title>robert</title>
     <link rel="stylesheet" href="style.css">
     <?php include("check.php")?>
     <script type="javascript" rel="javascript.js"></script>
@@ -73,3 +73,4 @@ if(isset($_POST['submit'])){
 
 </body>
 </html>
+

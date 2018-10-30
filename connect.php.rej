@@ -1,0 +1,24 @@
+diff a/connect.php b/connect.php	(rejected hunks)
+@@ -1,12 +0,8 @@
+-<?php
+-$servername = "localhost";
+-$username = "boluijten_com_database1";
+-$password = "XkWZ4ZK63ykj";
+-$dbname = "boluijten_com_database1";
+-
+-// Create connection
+-$conn = new mysqli($servername, $username, $password, $dbname);
+-// Check connection
+-if ($conn->connect_error) {
+-    die("Connection failed: " . $conn->connect_error);
+-}
+\ No newline at end of file
++<?
++	$dbname = 'wideworldimporters';
++	$dbuser = 'root';
++	$dbpass = '';
++	$dbhost = 'localhost';
++	$connect = mysqli_connect($dbhost, $dbuser, $dbpass) or die("Unable to connect to '$dbhost'");
++	mysqli_select_db($connect, $dbname) or die("Could not open the database '$dbname'");
++?>
+\ No newline at end of file
