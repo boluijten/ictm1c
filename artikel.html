@@ -1,0 +1,116 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+</style>
+
+<body>
+  <!-- Top Navigatie Balk -->
+  <div class="navbar">
+
+  <href="index.html"><img style="width:auto; height:80px;" src="logo.png">
+  <a href="#contact"><img style="width:auto; height:30px;" src="winkelmandje.png"></a>
+  <a href="#news">Inloggen</a>
+
+    <!-- De zoekbalk-->
+  <div class="search-container">
+  <form action="/action_page.php">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
+  </form>
+
+
+
+  </div>
+</div>
+
+<!-- De Div Waarin Het Product Zit -->
+<div class="grid-container-artikel">
+  <div class="grid-item-artikel">
+  <h2>Russian Bomb 1</h2>
+  <hr>
+  <h3 style="position: absolute; margin-left:36vw; margin-top: -3vh;">64,-</h3>
+  <!-- Het hoofdplaatje van het product -->
+  <div class="w3-content" style="max-width:20vw; margin-left:0vw;">
+  <img class="mySlides" src="winkelmandjegijs.png" style="width:200px;display:none">
+  <img class="mySlides" src="testproduct.jpg" style="width:200px">
+  <img class="mySlides" src="winkelmandje.png" style="width:200px;display:none">
+  </div>
+  <!-- Hoeveelheid en winkelmandje Rechts naast het plaatje -->
+  <form action="/action_page.php" style="position:absolute; margin-left:36vw; margin-top:-25vh;">
+  <input  type="number" name="quantity" min="1" max="99">
+  <input type="image" src="winkelmandjegijs.png" style="width:auto; height:50px; position:absolute; left:5vw; top:-2vh;" border="0" alt="Submit" />
+  </form>
+  <hr>
+  <!-- SlideShow Van De Afbeeldingen -->
+  <div class="w3-row-padding w3-section">
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="winkelmandjegijs.png" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="testproduct.jpg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+    </div>
+    <div class="w3-col s4">
+      <img class="demo w3-opacity w3-hover-opacity-off" src="winkelmandje.png" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Script Voor Image Slider -->
+<script>
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+<!-- Voorgestelde Producten Rechts -->
+<div class="grid-container-voorgesteld">
+<!-- Voorgestelde Producten -->
+<div class="grid-item-Voorgesteldeproducten">
+<h2>Voorgestelde Producten:</h2>
+<hr>
+</div>
+<div class="grid-item-artikel">
+</div>
+
+<div class="grid-item-artikel">
+  <p>Please werk</p>
+</div>
+<div class="grid-item-artikel">
+  <p>Please werk</p>
+</div>
+<div class="grid-item-artikel">
+  <p>Please werk</p>
+</div>
+<div class="grid-item-artikel">
+  <p>Please werk</p>
+</div>
+</div>
+
+
+
+</body>
+
+</html>
