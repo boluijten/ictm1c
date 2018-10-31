@@ -1,6 +1,7 @@
 body {margin:0;
 font-family: "Comic Sans MS", sans-serif}
 
+
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -113,13 +114,12 @@ font-family: "Comic Sans MS", sans-serif}
 
 .grid-container-artikel {
   width: 50vw;
-  margin-top: 15vh;
-  margin-left: 10vw;
-  margin-right: 20vw;
+  margin-top: 5vh;
+  margin-left: 0vw;
   grid-gap: 10px;
   display: grid;
   grid-template-columns: auto;
-border: 1px solid rgba(0, 0, 0, 0.8);
+border: 5px solid rgba(0, 174, 239, 0.8);
 
 
 
@@ -127,17 +127,26 @@ border: 1px solid rgba(0, 0, 0, 0.8);
 
 .grid-container-voorgesteld {
   width: 30vw;
-  margin-top: -92.3vh;
-  margin-left: 65vw;
-  margin-right: 30vw;
+  margin-top: 5vh ;
+  margin-left: 0vw;
   grid-gap: 10px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto ;
 
 
 
 }
-.grid-item-artikel {
+
+.grid-container-artikelpagina {
+  width: 100vw;
+  margin-top:  10vh;
+  margin-left: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+.grid-item-artikelpagina {
   background-color: rgba(255, 255, 255, 0.8);
 
   padding: 20px;
@@ -146,9 +155,16 @@ border: 1px solid rgba(0, 0, 0, 0.8);
   transition: 0.3s;
 }
 
-.grid-item-Voorgesteldeproducten {
-  background-color: rgba(255, 255, 255, 0.8);
+.grid-item-artikel {
+  background-color: rgba(120, 120, 120, 0.1);
 
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-Voorgesteldeproducten {
   padding: 20px;
   font-size: 15px;
   text-align: center;
