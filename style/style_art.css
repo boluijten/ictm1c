@@ -185,3 +185,25 @@ border: 5px solid rgba(0, 174, 239, 0.8);
 .show {
     display: block;
 }
+
+.prijspaneel{
+  float:right;
+  padding: 10px;
+  background-color: rgba(120, 120, 120, 0.15);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.grid-container-artikel-ondertitel {
+  grid-gap: 100px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+
+.grid-item-artikel-ondertitel {
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}

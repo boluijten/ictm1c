@@ -7,7 +7,7 @@ function laadCategorie(){
 	$groupName = "";
 	if(filter_input(INPUT_GET, 'categorie') != ""){
 		$groupName = filter_input(INPUT_GET, 'naamCategorie');
-		
+
 	}
 	//Verkrijg alle productgroepen
 	$groupQuery = "SELECT StockGroupName, StockGroupID FROM stockgroups";
@@ -35,7 +35,7 @@ function laadCategorie(){
 	} else {
 	    echo "No groups yet!<br>";
 	}
-	
+
 }
 
 // Wordt aangeroepen in index.php
@@ -122,18 +122,22 @@ function laadProductpagina(){
 		    while($row = mysqli_fetch_assoc($resultArtikel)) {
 			    echo "<h2>".$row['StockItemName']."</h2>";
 			    echo "<hr>";
-			    echo "<div class=\"w3-content\" style=\"max-width:20vw; margin-left:0vw;\">
+			    echo "
+							<div class=\"grid-container-artikel-ondertitel\">
+							<div class=\"grid-item-artikel-ondertitel\">
+							<div class=\"w3-content\" style=\"max-width:20vw; margin-left:0vw;\">
 		  				<img class=\"mySlides\" src=\"assets/artikelpag/russianbomb1.jpg\" style=\"width:300px; height:250px;display:none;\">
 		  				<img class=\"mySlides\" src=\"assets/artikelpag/russianbomb2.jpg\" style=\"width:300px; height:250px;\">
 		  				<img class=\"mySlides\" src=\"assets/artikelpag/russianbomb3.jpg\" style=\"width:300px; height:250px; display:none\">
-		  			</div>";
+		  			</div></div>";
 
-		  		echo "<form action=\"winkelwagen.php\" style=\"float:right; margin-top:-42vh; padding: 10px; background-color: rgba(120, 120, 120, 0.15);  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); text-align: center;\">
+		  		echo "<div class=\"grid-item-artikel-ondertitel\"><div class=\"prijspaneel\">
+							<form action=\"winkelwagen.php\">
 	  					<h2>€".$row['UnitPrice']."</h2>
 	  					<input  type=\"number\" name=\"quantity\" min=\"1\" max=\"99\">
 	  					<input type=\"image\" src=\"assets/artikelpag/winkelmandjegijs.png\" style=\"width:auto; height:40px; position:relative; \" align=\"middle\" border=\"0\" alt=\"Submit\" />
 	  					<p>Only 4 left in stock!</p>
-	  				</form>";
+	  				</form> </div></div></div>" ;
 
 	  			echo "<hr>
 					  <!-- SlideShow Van De Afbeeldingen -->
@@ -156,7 +160,7 @@ function laadProductpagina(){
 	}else{
 		echo "<div class='geenProducten'>Sorry er ging iets mis met het vinden van het product</div>";
 	}
-		
+
 
 }
 
