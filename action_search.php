@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <link rel="stylesheet" type="text/css" href="style/style_main.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +13,7 @@
   <!-- Top Navigatie Balk -->
   <div class="navbar">
 
- <img style="width:auto; height:80px;" src="assets/logo.png">
+  <href="index.html"><img style="width:auto; height:80px;" src="assets/logo.png">
   <a href="#contact"><img style="width:auto; height:30px;" src="assets/winkelmandje.png"></a>
   <a href="#news">Inloggen</a>
 
@@ -26,15 +25,14 @@
   </form>
   </div>
 </div>
-
-
-<?php
-// Laden van functies uit 'functions.php'
+<center>
+  <?php
 include("functions.php");
-// Later een terugfunctie door op de geselecteerde categorie te klikken?
-laadCategorie();
-laadProducten();
+zoekProduct();
+
+
 ?>
+</center>
 
 
 
