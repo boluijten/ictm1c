@@ -25,14 +25,12 @@
   </form>
   </div>
 </div>
-<center>
   <?php
 include("functions.php");
 zoekProduct();
 
 
 ?>
-</center>
 
 
 

@@ -89,14 +89,17 @@ function zoekProduct(){
 	$resultSearch = mysqli_query($connect, $searchQuery);
 	// Check of er data beschikbaar is:
 	if (mysqli_num_rows($resultSearch) > 0) {
+		echo "<div class='search'><h2>Resultaten voor \"$searchID\"</h2></div>";
 	    echo "<div class=\"grid-container\">";
 	    // Voor elk gevangen resultaat een productweergave printen
 	    while($row = mysqli_fetch_assoc($resultSearch)) {
+	    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."'>";
 	    	echo "<div class=\"grid-item\">";
 	    	echo "<h3>".$row['StockItemName']."</h3>";
 	    	echo "<img src='assets/geen.jpg'>";
 	    	echo "<p>".$row['MarketingComments']."</p>";
 	    	echo "</div>";
+	    	echo "</a>";
 	    }
 	    echo "</div>";
 	} else {
@@ -111,8 +114,10 @@ function laadProductpagina(){
 	// Verkrijg de zoekterm
 	$artikelID = filter_input(INPUT_GET, 'artikel');
 	// Zoek in de database naar producten die overeen komen met het geselecteerde artikel
+	// JOIN stockitemholdings USING('StockItemID')
+	// , QuantityOnHand 
 	if($artikelID != ""){
-		$artikelQuery = "SELECT StockItemName, StockItemID, MarketingComments, UnitPrice FROM stockitems WHERE StockItemID = $artikelID";
+		$artikelQuery = "SELECT StockItemName, StockItemID, MarketingComments, UnitPrice, QuantityOnHand FROM stockitems JOIN stockitemholdings USING(StockItemID) WHERE StockItemID = $artikelID";
 
 		// Haal naam id en comments uit de database
 		$resultArtikel = mysqli_query($connect, $artikelQuery);
@@ -134,9 +139,9 @@ function laadProductpagina(){
 		  		echo "<div class=\"grid-item-artikel-ondertitel\"><div class=\"prijspaneel\">
 							<form action=\"winkelwagen.php\">
 	  					<h2>€".$row['UnitPrice']."</h2>
-	  					<input  type=\"number\" name=\"quantity\" min=\"1\" max=\"99\">
+	  					<input  type=\"number\" name=\"quantity\" min=\"1\" max=\"99\" value='1'>
 	  					<input type=\"image\" src=\"assets/artikelpag/winkelmandjegijs.png\" style=\"width:auto; height:40px; position:relative; \" align=\"middle\" border=\"0\" alt=\"Submit\" />
-	  					<p>Only 4 left in stock!</p>
+	  					<p>Only ".number_format($row['QuantityOnHand'], 0, ',', '.')." left in stock!</p>
 	  				</form> </div></div></div>" ;
 
 	  			echo "<hr>
