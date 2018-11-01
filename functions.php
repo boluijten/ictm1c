@@ -108,6 +108,7 @@ function zoekProduct(){
 
 }
 
+// artikelpagina laadt de informatie van geselecteerde product (artikel.php)
 function laadProductpagina(){
 	// Verbinden met database
 	include("connect.php");
@@ -170,7 +171,20 @@ function laadProductpagina(){
 
 }
 
-
+// Artikelpagina random product (artikel.php)
+function RandomProduct(){
+        include("connect.php");
+        $itemID = filter_input(INPUT_GET, 'artikel');
+        $sql = "SELECT StockItemName FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = '$itemID' ORDER BY rand(), StockItemName ASC LIMIT 6";
+        $resultAanbevolen = mysqli_query($connect, $sql);
+        if(mysqli_num_rows($resultAanbevolen) > 0){
+            while($row = mysqli_fetch_assoc($resultAanbevolen)){
+                echo "<div class=\"grid-item-artikel\">
+                          <p>".$row['StockItemName']."</p>
+                        </div>";
+            }
+        }
+    }
 
 
 
