@@ -32,7 +32,7 @@
         <br>
         <br>
 <form>
-    <h2><b><pre>  Inloggen</pre></b></h2>
+    <h2><b><pre>Inloggen</pre></b></h2>
             <table>
                 <tr>
                     <td align = "left"><pre>    Gebruikersnaam: </pre></td>

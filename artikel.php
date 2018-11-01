@@ -76,6 +76,17 @@ function showDivs(n) {
   dots[slideIndex-1].className += " w3-opacity-off";
 }
 
+<<<<<<< HEAD
+=======
+function setPrice(aantal){
+  var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
+  var nieuwePrijs = aantal * prijs;
+  var nieuwePrijsRound = nieuwePrijs.toFixed(2);
+  document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+
+}
+
+>>>>>>> 7cb2eca7d9efb6f01c16994cfe3670348d4d3649
 
 </script>
 

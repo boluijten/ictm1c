@@ -83,7 +83,7 @@ function zoekProduct(){
 	// Verkrijg de zoekterm
 	$searchID = filter_input(INPUT_POST, 'search');
 	// Zoek in de database naar producten die de zoekterm in de naam hebben
-	$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments FROM stockitems WHERE StockItemName LIKE '%$searchID%' GROUP BY StockItemID";
+	$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments FROM stockitems WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID";
 
 	// Haal naam id en comments uit de database
 	$resultSearch = mysqli_query($connect, $searchQuery);
@@ -103,7 +103,7 @@ function zoekProduct(){
 	    }
 	    echo "</div>";
 	} else {
-	    echo "<div class='geenProducten'>Nog geen producten in deze categorie!</div>";
+	    echo "<div class='geenProducten'>Nog geen producten met de zoekterm $searchID!</div>";
 	}
 
 }
@@ -138,8 +138,9 @@ function laadProductpagina(){
 
 		  		echo "<div class=\"grid-item-artikel-ondertitel\"><div class=\"prijspaneel\">
 							<form action=\"winkelwagen.php\">
-	  					<h2>€".$row['UnitPrice']."</h2>
-	  					<input  type=\"number\" name=\"quantity\" min=\"1\" max=\"99\" value='1'>
+	  					<h2>€<span id='prijs'>".$row['UnitPrice']."</span></h2>
+	  					<input  type=\"number\" name=\"quantity\" min=\"1\" max=\"99\" value='1' onchange='setPrice(this.value)'>
+	  					<span class='noDisplay' id='prijsBegin'>".$row['UnitPrice']."</span>
 	  					<input type=\"image\" src=\"assets/artikelpag/winkelmandjegijs.png\" style=\"width:auto; height:40px; position:relative; \" align=\"middle\" border=\"0\" alt=\"Submit\" />
 	  					<p>Only ".number_format($row['QuantityOnHand'], 0, ',', '.')." left in stock!</p>
 	  				</form> </div></div></div>" ;
