@@ -1,12 +1,8 @@
-<?php
-$servername = "localhost";
-$username = "boluijten_com_database1";
-$password = "XkWZ4ZK63ykj";
-$dbname = "boluijten_com_database1";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+<?
+	$dbname = 'wideworldimporters';
+	$dbuser = 'root';
+	$dbpass = '';
+	$dbhost = 'localhost';
+	$connect = mysqli_connect($dbhost, $dbuser, $dbpass) or die("Unable to connect to '$dbhost'");
+	mysqli_select_db($connect, $dbname) or die("Could not open the database '$dbname'");
+?>
