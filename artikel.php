@@ -75,6 +75,8 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " w3-opacity-off";
 }
+
+
 </script>
 
   <div class="grid-item-artikelpagina">
@@ -83,24 +85,27 @@ function showDivs(n) {
 <!-- Voorgestelde Producten -->
 <div class="grid-item-Voorgesteldeproducten">
 <h2>Voorgestelde Producten:</h2>
-<hr>
-</div>
-<div class="grid-item-artikel">
-  <p>Please werk</p>
+
 </div>
 
-<div class="grid-item-artikel">
-  <p>Please werk</p>
-</div>
-<div class="grid-item-artikel">
-  <p>Please werk</p>
-</div>
-<div class="grid-item-artikel">
-  <p>Please werk</p>
-</div>
-<div class="grid-item-artikel">
-  <p>Please werk</p>
-</div>
+    <?php
+    function RandomProduct(){
+        include("connect.php");
+        $itemID = filter_input(INPUT_GET, 'artikel');
+        $sql = "SELECT StockItemName FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = '$itemID' ORDER BY rand(), StockItemName ASC LIMIT 6";
+        $resultAanbevolen = mysqli_query($connect, $sql);
+        if(mysqli_num_rows($resultAanbevolen) > 0){
+            while($row = mysqli_fetch_assoc($resultAanbevolen)){
+                echo "<div class=\"grid-item-artikel\">
+                          <p>".$row['StockItemName']."</p>
+                        </div>";
+            }
+        }
+    }
+    RandomProduct();
+    ?>
+
+
 </div>
 </div>
 </div>
