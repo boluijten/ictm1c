@@ -1,3 +1,7 @@
+<?php
+include("functions.php");
+
+?>
 <html>
 
 <head>
@@ -51,7 +55,6 @@ hr {
   <div class="grid-item-artikel">
     
 <?php
-include("functions.php");
 laadProductPagina();
 ?>
 
@@ -101,7 +104,7 @@ function setPrice(aantal){
 </div>
 
     <?php
-    RandomProduct();
+      RandomProduct();
     ?>
 
 
