@@ -1,5 +1,28 @@
-body {margin:0;
-font-family: "Comic Sans MS", sans-serif}
+/* Blauw logo: #4DBBFF */
+body{
+	font-family: sans-serif;
+	font-weight: lighter;
+}
+h1{
+	font-weight: lighter;
+}
+.items{
+ 	background-color: #00D8FF;
+	text-align: left;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px;
+	border: 3px solid black;
+	border-radius: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+body {
+  margin:0;
+  font-family: "Comic Sans MS", sans-serif
+}
+
 
 .navbar {
   overflow: hidden;
@@ -28,7 +51,6 @@ font-family: "Comic Sans MS", sans-serif}
   background: #ddd;
   color: black;
 }
-
 
 .navbar .search-container {
   float: right;
@@ -80,8 +102,11 @@ font-family: "Comic Sans MS", sans-serif}
     font-size: 13px;
     border: 2px solid #333;
 }
+.vertical-menu a:hover {
+    background-color: #ccc;
 
-.vertical-menu a {
+}
+.notInUse {
     background-color: #eee;
     color: black;
     display: block;
@@ -89,11 +114,21 @@ font-family: "Comic Sans MS", sans-serif}
     text-decoration: none;
 }
 
-.vertical-menu a:hover {
-    background-color: #ccc;
-
+.inUse{
+    background-color: #B9B9B9;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
 }
-
+.clear{
+  background-color: #B9B9B9;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  border-top: 2px solid #333;
+}
 .vertical-menu a.active {
     background-color: #4CAF50;
     color: white;
@@ -110,16 +145,87 @@ font-family: "Comic Sans MS", sans-serif}
 
 
 }
-.grid-item {
+
+.grid-container-artikel {
+  width: 50vw;
+  margin-top: 5vh;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  border: 5px solid rgba(0, 174, 239, 0.8);
+
+
+
+}
+
+.grid-container-voorgesteld {
+  width: 30vw;
+  margin-top: 5vh ;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto ;
+
+
+
+}
+
+.grid-container-artikelpagina {
+  width: 100vw;
+  margin-top:  10vh;
+  margin-left: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+.grid-item-artikelpagina {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+
   padding: 20px;
-  font-size: 30px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-artikel {
+  background-color: rgba(120, 120, 120, 0.1);
+
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-Voorgesteldeproducten {
+  padding: 20px;
+  font-size: 15px;
   text-align: center;
   transition: 0.3s;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid black;
+  padding: 20px;
+  font-size: 20px;
+  text-align: center;
+  transition: 0.3s;
+  width: 25vw;
+  height: 50vh;
+}
+.grid-container a{
+  text-decoration: none;
 }
 .grid-item:hover {
   transform: scale(1.05);
+}
+.grid-item img{
+  width: 21vw;
 }
 
 .dropdown {
@@ -167,4 +273,17 @@ font-family: "Comic Sans MS", sans-serif}
 
 .show {
     display: block;
+}
+.infoLoad{
+  position: center;
+}
+.geenProducten{
+  position: absolute;
+  top: 20vh;
+  left: 40vw;
+}
+.search{
+  position: absolute;
+  top: 10vh;
+  left: 40vw;
 }

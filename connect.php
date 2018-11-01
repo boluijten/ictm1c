@@ -1,4 +1,4 @@
-<?
+<?php
 	$dbname = 'wideworldimporters';
 	$dbuser = 'root';
 	$dbpass = '';
