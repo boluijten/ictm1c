@@ -23,7 +23,6 @@ body {
   font-family: "Comic Sans MS", sans-serif
 }
 
-
 .navbar {
   overflow: hidden;
   background-color: #333;
@@ -34,21 +33,22 @@ body {
 
 }
 
-
-
-.navbar a {
+.navbar .navbar-text {
   float: right;
   display: block;
-  color: #f2f2f2;
+  color: #eee;
   text-align: center;
-  padding: 14px 16px;
+	padding-top: 20px;
+	padding-right: 15px;
+	padding-bottom: 35px;
+	padding-left: 15px;
   text-decoration: none;
   font-size: 17px;
+	border: none;
 }
 
-
-.navbar a:hover {
-  background: #ddd;
+.navbar .navbar-text:hover {
+  background: rgba(0, 174, 239, 0.8);
   color: black;
 }
 
@@ -58,7 +58,8 @@ body {
 
 .navbar input[type=text] {
   padding: 6px;
-  margin-top: 8px;
+  margin-top: -10px;
+	margin-bottom: -500px;
   font-size: 17px;
   border: none;
 }
@@ -66,8 +67,7 @@ body {
 .navbar .search-container button {
   float: right;
   padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
+  margin-top: -10px;
   background: #ddd;
   font-size: 17px;
   border: none;
@@ -82,13 +82,11 @@ body {
   .navbar .search-container {
     float: none;
   }
-  .navbar a, .navbar input[type=text], .navbar .search-container button {
+.navbar input[type=text], .navbar .search-container button {
     float: none;
     display: block;
     text-align: right;
     width: 100%;
-    margin: 0;
-    padding: 14px;
   }
   .navbar input[type=text] {
     border: 1px solid #ccc;
@@ -245,7 +243,7 @@ body {
     margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+.dropdown:hover .dropbtn, .dropbtn:focus {
     background-color: red;
 }
 
