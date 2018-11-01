@@ -75,6 +75,16 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " w3-opacity-off";
 }
+
+function setPrice(aantal){
+  var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
+  var nieuwePrijs = aantal * prijs;
+  var nieuwePrijsRound = nieuwePrijs.toFixed(2);
+  document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+
+}
+
+
 </script>
 
   <div class="grid-item-artikelpagina">
