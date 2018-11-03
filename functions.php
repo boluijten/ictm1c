@@ -90,7 +90,7 @@ function zoekProduct(){
 	// Check of er data beschikbaar is:
 	if (mysqli_num_rows($resultSearch) > 0) {
 		echo "<div class='search'><h2>Resultaten voor \"$searchID\"</h2></div>";
-	    echo "<div class=\"grid-container\">";
+	    echo "<div class=\"grid-container-seach\">";
 	    // Voor elk gevangen resultaat een productweergave printen
 	    while($row = mysqli_fetch_assoc($resultSearch)) {
 	    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."'>";
@@ -116,7 +116,7 @@ function laadProductpagina(){
 	$artikelID = filter_input(INPUT_GET, 'artikel');
 	// Zoek in de database naar producten die overeen komen met het geselecteerde artikel
 	// JOIN stockitemholdings USING('StockItemID')
-	// , QuantityOnHand 
+	// , QuantityOnHand
 	if($artikelID != ""){
 		$artikelQuery = "SELECT StockItemName, StockItemID, MarketingComments, UnitPrice, QuantityOnHand FROM stockitems JOIN stockitemholdings USING(StockItemID) WHERE StockItemID = $artikelID";
 

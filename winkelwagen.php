@@ -1,0 +1,148 @@
+<html>
+
+<head>
+  <title>WWI</title>
+  <link rel="stylesheet" type="text/css" href="style/style_winkelwagen.css">
+  <link rel="stylesheet" type="text/css" href="style/navbar.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+</head>
+
+<style>
+hr {
+
+    border-width: 2px;
+    border-top: 1px solid rgba(0, 174, 239, 0.8);
+}
+</style>
+
+<body>
+  <!-- Top Navigatie Balk -->
+  <div class="navbar">
+ <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
+
+ <!-- Winkelwagentje + Aantal artikelen -->
+  <div class = navbar-text>
+  <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
+</div>
+  <div class = navbar-text>
+  <a style="text-decoration: none;" href="#news">Inloggen</a>
+</div>
+
+    <!-- De zoekbalk-->
+  <div class = navbar-text>
+  <div class="search-container">
+  <form action="action_search.php" method="POST">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
+  </form>
+  </div>
+</div>
+</div>
+
+<!--De WinkelWagen -->
+<!-- Tekst boven winkelvak-->
+<h2 style="margin-top: 20vh; width:100vw; text-align: center;">Winkelmandje:</h2>
+<!-- Winkelvak Zelf-->
+<div class="winkelvak">
+
+<!-- 1 Item in het winkelvak-->
+<div class="winkelvak-item">
+<form>
+<!-- Text -->
+Russian Bomb  -  Prijs
+<!-- De delete button -->
+<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
+  <i class="fas fa-trash-alt"></i>
+</button>
+<!--Aantal -->
+<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
+</form>
+<!-- Blauwe Streep eronder -->
+<hr>
+</div>
+
+<!-- 1 Item in het winkelvak-->
+<div class="winkelvak-item">
+<form>
+<!-- Text -->
+Russian Bomb  -  Prijs
+<!-- De delete button -->
+<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
+  <i class="fas fa-trash-alt"></i>
+</button>
+<!--Aantal -->
+<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
+</form>
+<!-- Blauwe Streep eronder -->
+<hr>
+</div>
+
+<!-- 1 Item in het winkelvak-->
+<div class="winkelvak-item">
+<form>
+<!-- Text -->
+Russian Bomb  -  Prijs
+<!-- De delete button -->
+<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
+  <i class="fas fa-trash-alt"></i>
+</button>
+<!--Aantal -->
+<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
+</form>
+<!-- Blauwe Streep eronder -->
+<hr>
+</div>
+
+<!-- 1 Item in het winkelvak-->
+<div class="winkelvak-item">
+<form>
+<!-- Text -->
+Russian Bomb  -  Prijs
+<!-- De delete button -->
+<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
+  <i class="fas fa-trash-alt"></i>
+</button>
+<!--Aantal -->
+<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
+</form>
+<!-- Blauwe Streep eronder -->
+<hr>
+</div>
+
+<!-- 1 Item in het winkelvak-->
+<div class="winkelvak-item">
+<form>
+<!-- Text -->
+Russian Bomb  -  Prijs
+<!-- De delete button -->
+<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
+  <i class="fas fa-trash-alt"></i>
+</button>
+<!--Aantal -->
+<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
+</form>
+<!-- Blauwe Streep eronder -->
+<hr>
+</div>
+
+</div>
+<!-- De Knop om verder te gaan met winkelen -->
+<div class="winkelvak-buttons">
+<button onclick="goBack()" style="float:left;"><i class="fas fa-backspace"></i> Terug gaan</button>
+
+<!-- De Knop om verder te gaan naar afrekenpagina -->
+<button onclick="location.href='index.php';"   style="float:right;"><i class="fas fa-forward"></i> Afrekenen</button>
+</div>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+
+</body>
+
+</html>

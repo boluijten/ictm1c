@@ -29,7 +29,7 @@ body {
     width: 200px;
       top: 20%;
     font-size: 13px;
-    border: 2px solid #333;
+    border: 5px solid rgba(0, 174, 239, 0.8);
 }
 .vertical-menu a:hover {
     background-color: #ccc;
@@ -67,6 +67,17 @@ body {
   margin-top: 20vh;
   margin-left: 20vw;
   margin-right: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+
+
+}
+
+.grid-container-seach {
+	justify-items: center;
+  margin-top: 30vh;
   grid-gap: 10px;
   display: grid;
   grid-template-columns: auto auto auto;
@@ -138,14 +149,15 @@ body {
 
 
 .grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #eee;
   border: 2px solid black;
   padding: 20px;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   transition: 0.3s;
   width: 25vw;
   height: 50vh;
+	text-decoration: none;
 }
 .grid-container a{
   text-decoration: none;
@@ -154,7 +166,7 @@ body {
   transform: scale(1.05);
 }
 .grid-item img{
-  width: 21vw;
+  width: 10vw;
 }
 
 .dropdown {
@@ -213,6 +225,7 @@ body {
 }
 .search{
   position: absolute;
-  top: 10vh;
-  left: 40vw;
+	width: 100vw;
+  top: 20vh;
+	text-align: center;
 }

@@ -17,7 +17,7 @@
  <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
 
   <div class = navbar-text>
-  <a href="text"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"></a>
+    <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
 </div>
   <div class = navbar-text>
   <a style="text-decoration: none;" href="#news">Inloggen</a>
