@@ -47,7 +47,7 @@ hr {
 <h2 style="margin-top: 20vh; width:100vw; text-align: center;">Winkelmandje:</h2>
 <!-- Winkelvak Zelf-->
 <div class="winkelvak">
-
+<div class="winkelvak2">
 <!-- 1 Item in het winkelvak-->
 <div class="winkelvak-item">
 <form>
@@ -127,14 +127,18 @@ Russian Bomb  -  Prijs
 <!-- Blauwe Streep eronder -->
 <hr>
 </div>
-
+</div>
+<div class="winkelvak-samenvatting">
+<p style="font-size: 15px;margin-top:0; padding-left: 5px;float:left; position:relative;">totale prijs: 67,99</p>
+<p style="font-size: 15px;margin-top:0; padding-right: 5px;float:right; position:relative;">totaal aantal: 58998</p>
+</div>
 </div>
 <!-- De Knop om verder te gaan met winkelen -->
-<div class="winkelvak-buttons">
+<div style="margin-top:.7vh;" class="winkelvak-buttons">
 <button onclick="goBack()" style="float:left;"><i class="fas fa-backspace"></i> Terug gaan</button>
 
 <!-- De Knop om verder te gaan naar afrekenpagina -->
-<button onclick="location.href='index.php';"   style="float:right;"><i class="fas fa-forward"></i> Afrekenen</button>
+<button onclick="location.href='afrekenen.php';"   style="float:right;"><i class="fas fa-forward"></i> Afrekenen</button>
 </div>
 <script>
 function goBack() {
