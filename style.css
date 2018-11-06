@@ -168,3 +168,33 @@ font-family: "Comic Sans MS", sans-serif}
 .show {
     display: block;
 }
+    div.fixed{
+    position: fixed;
+    bottom: 255;
+    right: 750;
+    width: 300px;
+    border: 8px solid #4dbbff;
+    background-color: #f2f7ff;
+    outline:2px solid black;
+        
+    }
+legend {
+    background-color: #f2f7ff;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+.output {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+
+label {
+    display: inline-block;
+    text-align: right;
+    width: 20%;
+}
+

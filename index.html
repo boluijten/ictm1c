@@ -8,6 +8,26 @@
 </head>
 
 <style>
+.vertical-menu {
+    width: 200px;
+}
+
+.vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 3px;
+    text-decoration: ;
+}
+
+.vertical-menu a:hover {
+    background-color: ;
+}
+
+.vertical-menu a.active {
+    background-color: #4dbbff;
+    color: white;
+}
 </style>
 
 <body>
@@ -17,6 +37,7 @@
   <href="index.html"><img style="width:auto; height:80px;" src="logo.png">
   <a href="#contact"><img style="width:auto; height:30px;" src="winkelmandje.png"></a>
   <a href="#news">Inloggen</a>
+ 
 
     <!-- De zoekbalk-->
   <div class="search-container">
@@ -25,46 +46,49 @@
     <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
   </form>
   </div>
-</div>
+</div> 
 
 
 <!-- Menu aan de linker zijkant, catogerieen -->
 <div class="vertical-menu">
 
-  <a href="#">Airline Novelties</a>
-  <a href="#">Clothing</a>
-  <a href="#">Computing Novelties</a>
-  <a href="#">Furry Footwear</a>
-  <a href="#">Mugs</a>
-  <a href="#">Novelty Items</a>
-  <a href="#">Packaging Materials</a>
-  <a href="#">T-Shirts</a>
-  <a href="#">Toys</a>
-  <a href="#">USB Novelties</a>
+  <a href="#"  class="active">Winkelmandje</a>
+  <a href="#">Artikel 1</a>
+  <a href="#">Artikel 2</a>
+  <a href="#">Artikel 3</a>
+  <a href="#">Artikel 4</a>
+  <a href="#">Artikel 5</a>
+  <class="isDisabled" href="#">______________________+<br></class>
+  <class="isDisabled" href="#"><pre>totaalprijs           73,60</pre></class>
 </div>
+      
+          
+<div class="fixed">
+     
+    <img style="width:40px; height:40px;" src="deliveryiconpng.png"> 
+      
+      <fieldset>
+    <legend>Kies een leverdatum:</legend>
+        <div>
+        <label for="start"></label>
+        <input type="date" id="start" name="trip"
+               value="03-11-2018"
+               min="03-11-2018" max="10-11-2018" />
+ 
+     
+        </div>
 
-<div class="grid-container">
-  <div class="grid-item">
-  <img style="width:auto; height:200px;" src="testproduct.jpg">
-  <p>Raketcodes van de russen very cheap!</p>
-  </div>
+    
 
-  <div class="grid-item">
-  <img style="width:auto; height:200px;" src="testproduct.jpg">
-  <p>Raketcodes van de russen very cheap!</p>
-  </div>
+       </fieldset>
 
-  <div class="grid-item">
-  <img style="width:auto; height:200px;" src="testproduct.jpg">
-  <p>Raketcodes van de russen very cheap!</p>
-  </div>
+            </div>
+    
 
-  <div class="grid-item">4</div>
-  <div class="grid-item">5</div>
-  <div class="grid-item">6</div>
-  <div class="grid-item">7</div>
-  <div class="grid-item">8</div>
-  <div class="grid-item">9</div>
+  
+  
+
+  
 </div>
 
 
