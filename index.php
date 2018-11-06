@@ -1,10 +1,14 @@
+<?php
+  session_start();
+  $productIndicator = 0;
+  if(isset($_SESSION['cart'])){
+    $productIndicator = array_sum($_SESSION['cart']);
+  }
+?>
 <html>
 
 <head>
-<<<<<<< HEAD
-=======
   <title>WWI</title>
->>>>>>> 7cb2eca7d9efb6f01c16994cfe3670348d4d3649
   <link rel="stylesheet" type="text/css" href="style/style_main.css">
   <link rel="stylesheet" type="text/css" href="style/navbar.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +24,9 @@
   <div class="navbar">
  <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
 
+ <!-- Winkelwagentje + Aantal artikelen -->
   <div class = navbar-text>
-  <a href="text"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"></a>
+  <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge"><?php echo $productIndicator; ?></span></a></li></a>
 </div>
   <div class = navbar-text>
   <a style="text-decoration: none;" href="#news">Inloggen</a>
@@ -37,6 +42,7 @@
   </div>
 </div>
 </div>
+
 
 
 <?php
