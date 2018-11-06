@@ -64,7 +64,7 @@ function laadProducten(){
 	    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'>";
 	    	echo "<div class=\"grid-item\">";
 	    	echo "<h3>".$row['StockItemName']."</h3>";
-	    	echo "<img src='assets/geen.jpg'>";
+	    	echo "<img style='width:100%;' src='assets/geen.jpg'>";
 	    	echo "<p>".$row['MarketingComments']."</p>";
 	    	echo "</div>";
 	    	echo "</a>";
@@ -176,12 +176,14 @@ function RandomProduct(){
     include("connect.php");
     $groupID = filter_input(INPUT_GET, 'group');
     $itemID = filter_input(INPUT_GET, 'artikel');
-    $sql = "SELECT StockItemName, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = $groupID ORDER BY rand(), StockItemName ASC LIMIT 6";
+    $sql = "SELECT StockItemName, StockGroupID, StockItemID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = $groupID ORDER BY rand(), StockItemName ASC LIMIT 6";
     $resultAanbevolen = mysqli_query($connect, $sql);
     if(mysqli_num_rows($resultAanbevolen) > 0){
         while($row = mysqli_fetch_assoc($resultAanbevolen)){
-            echo "<div class=\"grid-item-artikel\">
-                      <p>".$row['StockItemName']."</p>
+						echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'>";
+            echo "<div class=\"grid-item-artikel-voorgesteld\">
+											<img src='assets/geeen.png' style='width:100%; height:100%; z-index:-10; padding:10px; position: relative; filter: blur(0px);'>
+											<p style='z-index:10;'>".$row['StockItemName']."</p>
                     </div>";
         }
     }

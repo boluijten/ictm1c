@@ -1,6 +1,7 @@
 body {margin:0;
-font-family: "Comic Sans MS", sans-serif}
+font-family: "Comic Sans MS", sans-serif;
 
+}
 
 
 
@@ -27,6 +28,7 @@ border: 5px solid rgba(0, 174, 239, 0.8);
 
 
 
+
 }
 
 .grid-container-voorgesteld {
@@ -42,6 +44,7 @@ border: 5px solid rgba(0, 174, 239, 0.8);
 }
 
 .grid-container-artikelpagina {
+  text-decoration: none;
   width: 100vw;
   margin-top:  10vh;
   margin-left: 5vw;
@@ -52,7 +55,7 @@ border: 5px solid rgba(0, 174, 239, 0.8);
 }
 .grid-item-artikelpagina {
   background-color: rgba(255, 255, 255, 0.8);
-
+  text-decoration: none;
   padding: 20px;
   font-size: 15px;
   text-align: left;
@@ -61,12 +64,32 @@ border: 5px solid rgba(0, 174, 239, 0.8);
 
 .grid-item-artikel {
   background-color: rgba(120, 120, 120, 0.1);
-
+  text-decoration: none;
   padding: 20px;
   font-size: 15px;
   text-align: left;
   transition: 0.3s;
+
 }
+
+.grid-item-artikel-voorgesteld {
+  background-color: rgba(120, 120, 120, 0.1);
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  height:25vh;
+  	text-decoration: none;
+}
+
+.grid-item-artikel-voorgesteld p {
+  margin-top: -17vh;
+  	text-decoration: none;
+}
+
+.grid-item-artikel-voorgesteld:hover {
+  transform: scale(1.02);
+}
+
 
 .grid-item-Voorgesteldeproducten {
   padding: 20px;
