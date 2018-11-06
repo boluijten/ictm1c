@@ -1,0 +1,36 @@
+.winkelvak{
+  height: 300px;
+  border: 5px solid rgba(0, 174, 239, 0.8);
+  margin: auto;
+  width: 70vw;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+-webkit-box-shadow: inset 0 0 10px #000000;
+box-shadow:         inset 0 0 10px #000000;
+}
+
+.winkelvak2{
+  height: 90%;
+  overflow: auto;
+  margin: auto;
+  width: 100%;
+}
+
+.winkelvak-buttons{
+  height: 100px;
+  padding: 5px;
+  margin: auto;
+  width: 70vw;
+}
+
+.winkelvak-item{
+  margin: auto;
+  padding: 15px;
+}
+
+.winkelvak-samenvatting{
+  border-top: 5px solid rgba(0, 174, 239, 0.8);
+  width:100%;
+  height: 10%;
+  margin:auto;
+  
+}
