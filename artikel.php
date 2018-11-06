@@ -83,6 +83,8 @@ function showDivs(n) {
   dots[slideIndex-1].className += " w3-opacity-off";
 }
 
+<<<<<<< HEAD
+=======
 function setPrice(aantal){
   var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
   var nieuwePrijs = aantal * prijs;
@@ -91,6 +93,7 @@ function setPrice(aantal){
 
 }
 
+>>>>>>> 7cb2eca7d9efb6f01c16994cfe3670348d4d3649
 
 </script>
 
@@ -104,7 +107,24 @@ function setPrice(aantal){
 </div>
 
     <?php
+<<<<<<< HEAD
       RandomProduct();
+=======
+    function RandomProduct(){
+        include("connect.php");
+        $itemID = filter_input(INPUT_GET, 'artikel');
+        $sql = "SELECT StockItemName FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = '$itemID' ORDER BY rand(), StockItemName ASC LIMIT 6";
+        $resultAanbevolen = mysqli_query($connect, $sql);
+        if(mysqli_num_rows($resultAanbevolen) > 0){
+            while($row = mysqli_fetch_assoc($resultAanbevolen)){
+                echo "<div class=\"grid-item-artikel\">
+                          <p>".$row['StockItemName']."</p>
+                        </div>";
+            }
+        }
+    }
+    RandomProduct();
+>>>>>>> 9089fb80ff11b471458cbe609b4893091a6aeb10
     ?>
 
 
