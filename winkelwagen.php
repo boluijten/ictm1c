@@ -1,3 +1,11 @@
+<?php
+session_start();
+$productIndicator = 0;
+  if(isset($_SESSION['cart'])){
+    $productIndicator = array_sum($_SESSION['cart']);
+  }
+//
+?>
 <html>
 
 <head>
@@ -25,7 +33,7 @@ hr {
 
  <!-- Winkelwagentje + Aantal artikelen -->
   <div class = navbar-text>
-  <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
+  <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge"><?php echo $productIndicator; ?></span></a></li></a>
 </div>
   <div class = navbar-text>
   <a style="text-decoration: none;" href="#news">Inloggen</a>
@@ -49,88 +57,79 @@ hr {
 <div class="winkelvak">
 <div class="winkelvak2">
 <!-- 1 Item in het winkelvak-->
-<div class="winkelvak-item">
-<form>
-<!-- Text -->
-Russian Bomb  -  Prijs
-<!-- De delete button -->
-<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
-  <i class="fas fa-trash-alt"></i>
-</button>
-<!--Aantal -->
-<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
-</form>
-<!-- Blauwe Streep eronder -->
-<hr>
-</div>
 
-<!-- 1 Item in het winkelvak-->
-<div class="winkelvak-item">
-<form>
-<!-- Text -->
-Russian Bomb  -  Prijs
-<!-- De delete button -->
-<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
-  <i class="fas fa-trash-alt"></i>
-</button>
-<!--Aantal -->
-<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
-</form>
-<!-- Blauwe Streep eronder -->
-<hr>
-</div>
+<?php
 
-<!-- 1 Item in het winkelvak-->
-<div class="winkelvak-item">
-<form>
-<!-- Text -->
-Russian Bomb  -  Prijs
-<!-- De delete button -->
-<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
-  <i class="fas fa-trash-alt"></i>
-</button>
-<!--Aantal -->
-<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
-</form>
-<!-- Blauwe Streep eronder -->
-<hr>
-</div>
+  function verkrijgWinkelwagen(){
+    if(isset($_SESSION['cart'])){
+      $cart = $_SESSION['cart'];
+      foreach ($cart as $itemID => $aantal) {
+          include("connect.php");
+          $sql = "SELECT * FROM stockitems WHERE StockItemID = $itemID";
+          $resultGetInfo = mysqli_query($connect, $sql);
+          if(mysqli_num_rows($resultGetInfo) > 0){
+            while($row = mysqli_fetch_assoc($resultGetInfo)){
+                echo "<div class=\"winkelvak-item\">
+                <form>
+                <!-- Text -->
+                ".$row['StockItemName']."  - &euro;".$row['UnitPrice']." - &euro;". number_format($row['UnitPrice'] * $aantal, 2, ',', '.')."
+                <!-- De delete button -->
+                <button type=\"submit\" value=\"Submit\" id=\"submitButton\" style=\"float:right; height:28px;\" />
+                  <i class=\"fas fa-trash-alt\"></i>
+                </button>
+                <!--Aantal -->
+                <input type=\"number\" name=\"aantal_".$itemID."\" min=\"1\" max=\"99\" value=\"".$aantal."\" maxlength=\"4\" size=\"4\" style=\"float: right;\"/>
+                </form>
+                <!-- Blauwe Streep eronder -->
+                <hr>
+                </div>";
+            }
+          }
+      }
+    }else{
+      echo "Nog geen artikelen in het winkelmandje!";
+    }
+  }
 
-<!-- 1 Item in het winkelvak-->
-<div class="winkelvak-item">
-<form>
-<!-- Text -->
-Russian Bomb  -  Prijs
-<!-- De delete button -->
-<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
-  <i class="fas fa-trash-alt"></i>
-</button>
-<!--Aantal -->
-<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
-</form>
-<!-- Blauwe Streep eronder -->
-<hr>
-</div>
 
-<!-- 1 Item in het winkelvak-->
-<div class="winkelvak-item">
-<form>
-<!-- Text -->
-Russian Bomb  -  Prijs
-<!-- De delete button -->
-<button type="submit" value="Submit" id="submitButton" style="float:right; height:28px;" />
-  <i class="fas fa-trash-alt"></i>
-</button>
-<!--Aantal -->
-<input type="number" name="jelteSQUIIIRRTT" min="1" max="99" value="5" maxlength="4" size="4" style="float: right;"/>
-</form>
-<!-- Blauwe Streep eronder -->
-<hr>
-</div>
+  function totaalPrijs(){
+    $totaalprijs = 0;
+    if(isset($_SESSION['cart'])){
+      $cart = $_SESSION['cart'];
+      foreach ($cart as $itemID => $aantal) {
+          include("connect.php");
+          $sql = "SELECT UnitPrice FROM stockitems WHERE StockItemID = $itemID";
+          $resultGetInfo = mysqli_query($connect, $sql);
+          if(mysqli_num_rows($resultGetInfo) > 0){
+            while($row = mysqli_fetch_assoc($resultGetInfo)){
+                $totaalprijs += $row['UnitPrice'] * $aantal;
+            }
+          }
+      }
+      
+    }else{
+      $totaalprijs = 0.00;
+    }
+    return number_format($totaalprijs, 2, ',', '.');
+  }
+  
+
+  
+  verkrijgWinkelwagen();
+?>
+
+
+
+
+
+
+
+
+
 </div>
 <div class="winkelvak-samenvatting">
-<p style="font-size: 15px;margin-top:0; padding-left: 5px;float:left; position:relative;">totale prijs: 67,99</p>
-<p style="font-size: 15px;margin-top:0; padding-right: 5px;float:right; position:relative;">totaal aantal: 58998</p>
+<p style="font-size: 15px;margin-top:0; padding-left: 5px;float:left; position:relative;">totale prijs: <?php echo "&euro;".totaalPrijs(); ?></p>
+<p style="font-size: 15px;margin-top:0; padding-right: 5px;float:right; position:relative;">totaal aantal: <?php echo $productIndicator; ?></p>
 </div>
 </div>
 <!-- De Knop om verder te gaan met winkelen -->

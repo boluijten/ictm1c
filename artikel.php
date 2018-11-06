@@ -1,4 +1,9 @@
 <?php
+session_start();
+$productIndicator = 0;
+  if(isset($_SESSION['cart'])){
+    $productIndicator = array_sum($_SESSION['cart']);
+  }
 include("functions.php");
 
 ?>
@@ -27,7 +32,7 @@ hr {
  <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
 
   <div class = navbar-text>
-    <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
+    <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge"><?php echo $productIndicator; ?></span></a></li></a>
 </div>
   <div class = navbar-text>
   <a style="text-decoration: none;" href="#news">Inloggen</a>
@@ -83,8 +88,6 @@ function showDivs(n) {
   dots[slideIndex-1].className += " w3-opacity-off";
 }
 
-<<<<<<< HEAD
-=======
 function setPrice(aantal){
   var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
   var nieuwePrijs = aantal * prijs;
@@ -93,7 +96,6 @@ function setPrice(aantal){
 
 }
 
->>>>>>> 7cb2eca7d9efb6f01c16994cfe3670348d4d3649
 
 </script>
 
@@ -107,24 +109,7 @@ function setPrice(aantal){
 </div>
 
     <?php
-<<<<<<< HEAD
       RandomProduct();
-=======
-    function RandomProduct(){
-        include("connect.php");
-        $itemID = filter_input(INPUT_GET, 'artikel');
-        $sql = "SELECT StockItemName FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = '$itemID' ORDER BY rand(), StockItemName ASC LIMIT 6";
-        $resultAanbevolen = mysqli_query($connect, $sql);
-        if(mysqli_num_rows($resultAanbevolen) > 0){
-            while($row = mysqli_fetch_assoc($resultAanbevolen)){
-                echo "<div class=\"grid-item-artikel\">
-                          <p>".$row['StockItemName']."</p>
-                        </div>";
-            }
-        }
-    }
-    RandomProduct();
->>>>>>> 9089fb80ff11b471458cbe609b4893091a6aeb10
     ?>
 
 
