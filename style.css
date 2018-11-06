@@ -170,8 +170,8 @@ font-family: "Comic Sans MS", sans-serif}
 }
     div.fixed{
     position: fixed;
-    bottom: 255;
-    right: 750;
+    bottom: 475;
+    right: 870;
     width: 300px;
     border: 8px solid #4dbbff;
     background-color: #f2f7ff;
@@ -196,5 +196,17 @@ label {
     display: inline-block;
     text-align: right;
     width: 20%;
+}
+div.fixedd{
+    position: fixed;
+    bottom: 355;
+    right: 470;
+    width: 300px;
+    border: 8px solid #4dbbff;
+    background-color: #f2f7ff;
+    outline:2px solid black;
+    text-align: center
+}div.gegevens{
+    text-align: left
 }
 

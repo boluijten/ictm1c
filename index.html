@@ -71,27 +71,46 @@
     <legend>Kies een leverdatum:</legend>
         <div>
         <label for="start"></label>
-        <input type="date" id="start" name="trip"
+        <input type="date" id="datefield" name="trip"
                value="03-11-2018"
-               min="03-11-2018" max="10-11-2018" />
- 
-     
-        </div>
-
-    
-
-       </fieldset>
+               min="03-11-2018" max="10-11-2019" />
+            </div>
+    </fieldset>
 
             </div>
-    
-
-  
-  
-
-  
 </div>
+<div class="fixedd">
+    <h1>Inloggen</h1><br>
+        <div class="gegevens"><td >Gebruikersnaam: </td>
+            <form method=post action=#>
+            <td ><input type = "text" placeholder="Gebruikersnaam" name = "gebruikersnaam" /></td>
+            <td align = "left">Wachtwoord:</td>
+            <input type = "text" placeholder="Wachtwoord" name = "wachtwoord"/>
+            <input type = "submit" style="float:right;" value = "Inloggen">
+    
+            
+    
+    
+            </form>
+    </div>
+        
+    </div>
 
+<SCRIPT>
+var today = new Date();
+var dd = today.getDate()+1;
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
 
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("datefield").setAttribute("min", today);    
+</SCRIPT>
 
 
 </body>

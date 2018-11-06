@@ -1,0 +1,231 @@
+/* Blauw logo: #4DBBFF */
+body{
+	font-family: sans-serif;
+	font-weight: lighter;
+}
+h1{
+	font-weight: lighter;
+}
+.items{
+ 	background-color: #00D8FF;
+	text-align: left;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px;
+	border: 3px solid black;
+	border-radius: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+body {
+  margin:0;
+  font-family: "Comic Sans MS", sans-serif
+}
+
+
+.vertical-menu {
+  position: fixed;
+    width: 200px;
+      top: 20%;
+    font-size: 13px;
+    border: 5px solid rgba(0, 174, 239, 0.8);
+}
+.vertical-menu a:hover {
+    background-color: #ccc;
+
+}
+.notInUse {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+.inUse{
+    background-color: #B9B9B9;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+.clear{
+  background-color: #B9B9B9;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  border-top: 2px solid #333;
+}
+.vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.grid-container {
+  margin-top: 20vh;
+  margin-left: 20vw;
+  margin-right: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+
+
+}
+
+.grid-container-seach {
+	justify-items: center;
+  margin-top: 30vh;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+
+
+}
+
+.grid-container-artikel {
+  width: 50vw;
+  margin-top: 5vh;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  border: 5px solid rgba(0, 174, 239, 0.8);
+
+
+
+}
+
+.grid-container-voorgesteld {
+  width: 30vw;
+  margin-top: 5vh ;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto ;
+
+
+
+}
+
+.grid-container-artikelpagina {
+  width: 100vw;
+  margin-top:  10vh;
+  margin-left: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+.grid-item-artikelpagina {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-artikel {
+  background-color: rgba(120, 120, 120, 0.1);
+
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-Voorgesteldeproducten {
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+
+.grid-item {
+  background-color: #eee;
+  border: 2px solid black;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  width: 25vw;
+  height: 50vh;
+	text-decoration: none;
+}
+.grid-container a{
+  text-decoration: none;
+}
+.grid-item:hover {
+  transform: scale(1.05);
+}
+.grid-item img{
+  width: 10vw;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 90;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+.infoLoad{
+  position: center;
+}
+.geenProducten{
+  position: absolute;
+  top: 20vh;
+  left: 40vw;
+}
+.search{
+  position: absolute;
+	width: 100vw;
+  top: 20vh;
+	text-align: center;
+}

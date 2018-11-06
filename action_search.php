@@ -1,7 +1,5 @@
 <html>
-
 <head>
-  <title>WWI</title>
   <link rel="stylesheet" type="text/css" href="style/style_main.css">
   <link rel="stylesheet" type="text/css" href="style/navbar.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,14 +10,14 @@
 <style>
 </style>
 
+
 <body>
   <!-- Top Navigatie Balk -->
   <div class="navbar">
  <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
 
- <!-- Winkelwagentje + Aantal artikelen -->
   <div class = navbar-text>
-  <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
+    <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge">jelte aanpassen</span></a></li></a>
 </div>
   <div class = navbar-text>
   <a style="text-decoration: none;" href="#news">Inloggen</a>
@@ -35,15 +33,11 @@
   </div>
 </div>
 </div>
-
-
-
-<?php
-// Laden van functies uit 'functions.php'
+  <?php
 include("functions.php");
-// Later een terugfunctie door op de geselecteerde categorie te klikken?
-laadCategorie();
-laadProducten();
+zoekProduct();
+
+
 ?>
 
 

@@ -1,0 +1,136 @@
+body {margin:0;
+font-family: "Comic Sans MS", sans-serif}
+
+
+
+
+.grid-container {
+  margin-top: 20vh;
+  margin-left: 20vw;
+  margin-right: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+
+
+}
+
+.grid-container-artikel {
+  width: 50vw;
+  margin-top: 5vh;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto;
+border: 5px solid rgba(0, 174, 239, 0.8);
+
+
+
+}
+
+.grid-container-voorgesteld {
+  width: 30vw;
+  margin-top: 5vh ;
+  margin-left: 0vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto ;
+
+
+
+}
+
+.grid-container-artikelpagina {
+  width: 100vw;
+  margin-top:  10vh;
+  margin-left: 5vw;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+.grid-item-artikelpagina {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-artikel {
+  background-color: rgba(120, 120, 120, 0.1);
+
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.grid-item-Voorgesteldeproducten {
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  transition: 0.3s;
+}
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+
+
+.show {
+    display: block;
+}
+
+.prijspaneel{
+  float:right;
+  padding: 10px;
+  background-color: rgba(120, 120, 120, 0.15);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.grid-container-artikel-ondertitel {
+  grid-gap: 100px;
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+
+.grid-item-artikel-ondertitel {
+  padding: 20px;
+  font-size: 15px;
+  text-align: left;
+  transition: 0.3s;
+}
