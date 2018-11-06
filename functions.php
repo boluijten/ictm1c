@@ -38,6 +38,7 @@ function laadCategorie(){
 
 }
 
+
 // Wordt aangeroepen in index.php
 function laadProducten(){
 	// Verbinden met database
@@ -83,7 +84,7 @@ function zoekProduct(){
 	// Verkrijg de zoekterm
 	$searchID = filter_input(INPUT_POST, 'search');
 	// Zoek in de database naar producten die de zoekterm in de naam hebben
-	$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments FROM stockitems WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID";
+	$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments FROM stockitems WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID ";
 
 	// Haal naam id en comments uit de database
 	$resultSearch = mysqli_query($connect, $searchQuery);
@@ -186,10 +187,67 @@ function RandomProduct(){
         }
     }
 }
+function SorteerProductenAZ(){
+	// Verbinden met database
+	include("connect.php");
+	// Verkrijg de zoekterm
+	$searchID = filter_input(INPUT_POST, 'search');
+	// Zoek in de database naar producten die de zoekterm in de naam hebben
+	$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments FROM stockitems WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID ORDER BY StockItemName";
 
+	// Haal naam id en comments uit de database
+	$resultSearch = mysqli_query($connect, $searchQuery);
+	// Check of er data beschikbaar is:
+	if (mysqli_num_rows($resultSearch) > 0) {
+		echo "<div class='search'><h2>Resultaten voor \"$searchID\"</h2></div>";
+			echo "<div class=\"grid-container-seach\">";
+			// Voor elk gevangen resultaat een productweergave printen
+			while($row = mysqli_fetch_assoc($resultSearch)) {
+				echo "<a href='artikel.php?artikel=".$row['StockItemID']."'>";
+				echo "<div class=\"grid-item\">";
+				echo "<h3>".$row['StockItemName']."</h3>";
+				echo "<img src='assets/geen.jpg'>";
+				echo "<p>".$row['MarketingComments']."</p>";
+				echo "</div>";
+				echo "</a>";
+			}
+			echo "</div>";
+	} else {
+			echo "<div class='geenProducten'>Nog geen producten met de zoekterm $searchID!</div>";
+	}
 
+	}
 
+function SorteerProducten(){
+		// Verbinden met database
+		include("connect.php");
+		// Verkrijg de zoekterm
+		$searchID = filter_input(INPUT_POST, 'search');
+		// Zoek in de database naar producten die de zoekterm in de naam hebben
+		$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments, UnitPrice FROM stockitems WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID ORDER BY StockItemName DESC";
 
+		// Haal naam id en comments uit de database
+		$resultSearch = mysqli_query($connect, $searchQuery);
+		// Check of er data beschikbaar is:
+		if (mysqli_num_rows($resultSearch) > 0) {
+			echo "<div class='search'><h2>Resultaten voor \"$searchID\"</h2></div>";
+				echo "<div class=\"grid-container-seach\">";
+				// Voor elk gevangen resultaat een productweergave printen
+				while($row = mysqli_fetch_assoc($resultSearch)) {
+					echo "<a href='artikel.php?artikel=".$row['StockItemID']."'>";
+					echo "<div class=\"grid-item\">";
+					echo "<h3>".$row['StockItemName']."</h3>";
+					echo "<img src='assets/geen.jpg'>";
+					echo "<p>".$row['MarketingComments']."</p>";
+					echo "</div>";
+					echo "</a>";
+				}
+				echo "</div>";
+		} else {
+				echo "<div class='geenProducten'>Nog geen producten met de zoekterm $searchID!</div>";
+		}
+
+		}
 
 
 

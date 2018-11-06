@@ -229,3 +229,7 @@ body {
   top: 20vh;
 	text-align: center;
 }
+
+.sorteerkolom{
+	float:right !important;
+}

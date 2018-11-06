@@ -33,9 +33,30 @@
   </div>
 </div>
 </div>
+
+              <?php $zoekterm = filter_input(INPUT_POST, 'search'); ?>
+              <div class='sorteerkolom'>
+              Sorteren op:
+                <form method='get' action="action_search.php">
+              <select name="sorteer">
+                <option value="Naam_a>z">Naam A-Z</option>
+                <option value="Naam_z>a">Naam Z-A</option>
+                <option value="Prijs_hoog>laag">Prijs hoog-laag</option>
+                <option value="Prijs_laag>hoog">Prijs laag-hoog</option>
+              </select>
+              <br><br>
+              <input type="submit" value="Sorteer">
+            </form>
+</div>
   <?php
 include("functions.php");
-zoekProduct();
+if(filter_input(INPUT_GET, 'sorteer') != ""){
+  SorteerProducten();
+}else{
+  zoekProduct();
+}
+
+
 
 
 ?>
