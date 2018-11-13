@@ -33,6 +33,7 @@
 </div>
 
     <!-- De zoekbalk-->
+
   <div class = navbar-text>
   <div class="search-container">
   <form action="action_search.php" method="POST">
@@ -42,6 +43,8 @@
   </div>
 </div>
 </div>
+
+
 
 
 

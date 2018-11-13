@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 $productIndicator = 0;
   if(isset($_SESSION['cart'])){
@@ -61,7 +62,7 @@ hr {
 <?php
 
   function verkrijgWinkelwagen(){
-    if(isset($_SESSION['cart'])){
+    if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0){
       $cart = $_SESSION['cart'];
       foreach ($cart as $itemID => $aantal) {
           include("connect.php");
@@ -70,15 +71,25 @@ hr {
           if(mysqli_num_rows($resultGetInfo) > 0){
             while($row = mysqli_fetch_assoc($resultGetInfo)){
                 echo "<div class=\"winkelvak-item\">
-                <form>
+                <form method='post'>
                 <!-- Text -->
-                ".$row['StockItemName']."  - &euro;".$row['UnitPrice']." - &euro;". number_format($row['UnitPrice'] * $aantal, 2, ',', '.')."
-                <!-- De delete button -->
-                <button type=\"submit\" value=\"Submit\" id=\"submitButton\" style=\"float:right; height:28px;\" />
-                  <i class=\"fas fa-trash-alt\"></i>
-                </button>
+                ".$row['StockItemName']."  - &euro;".$row['UnitPrice'];
+                if($aantal > 1){
+                  echo " - &euro;". number_format($row['UnitPrice'] * $aantal, 2, ',', '.');
+
+                }
+                echo "<!-- De delete button -->
+                
                 <!--Aantal -->
-                <input type=\"number\" name=\"aantal_".$itemID."\" min=\"1\" max=\"99\" value=\"".$aantal."\" maxlength=\"4\" size=\"4\" style=\"float: right;\"/>
+                <input type=\"number\" name=\"aantal\" min=\"1\" max=\"99\" value=\"".$aantal."\" maxlength=\"4\" size=\"4\" style=\"float: right;\"/>
+                <input type='hidden' name='itemIDSend' value='$itemID'>
+                <input type='hidden' name='changeValue'/>
+                </form>
+                <form method='post'>
+	                <button type='submit' value=\"Submit\" id=\"seleteItem\" name='deleteItem' style=\"float:right; height:28px;\" />
+	                  <i class=\"fas fa-trash-alt\"></i>
+	                </button>
+                	<input type='hidden' name='itemIDSend' value='$itemID'>
                 </form>
                 <!-- Blauwe Streep eronder -->
                 <hr>
@@ -87,7 +98,7 @@ hr {
           }
       }
     }else{
-      echo "Nog geen artikelen in het winkelmandje!";
+      echo "<p>Nog geen artikelen in het winkelmandje!</p>";
     }
   }
 
@@ -102,7 +113,10 @@ hr {
           $resultGetInfo = mysqli_query($connect, $sql);
           if(mysqli_num_rows($resultGetInfo) > 0){
             while($row = mysqli_fetch_assoc($resultGetInfo)){
+              if($aantal > 0){
+
                 $totaalprijs += $row['UnitPrice'] * $aantal;
+              }
             }
           }
       }
@@ -113,9 +127,26 @@ hr {
     return number_format($totaalprijs, 2, ',', '.');
   }
   
-
-  
   verkrijgWinkelwagen();
+
+
+  if(isset($_POST['aantal'])){
+  	$aantal = filter_input(INPUT_POST, 'aantal');
+  	$itemID = filter_input(INPUT_POST, 'itemIDSend');
+    if($aantal > 0){
+      $_SESSION['cart'][$itemID] = $aantal;
+      header('location: winkelwagen.php');
+    }else{
+      unset($_SESSION['cart'][$itemID]);
+      header('location: winkelwagen.php');
+    }
+  	
+  }
+  if(isset($_POST['deleteItem'])){
+  	$itemID = filter_input(INPUT_POST, 'itemIDSend');
+  	unset($_SESSION['cart'][$itemID]);
+  	header('location: winkelwagen.php');
+  }
 ?>
 
 

@@ -89,10 +89,15 @@ function showDivs(n) {
 }
 
 function setPrice(aantal){
-  var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
-  var nieuwePrijs = aantal * prijs;
-  var nieuwePrijsRound = nieuwePrijs.toFixed(2);
-  document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+  if(aantal >= 1){
+    var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
+    var nieuwePrijs = aantal * prijs;
+    var nieuwePrijsRound = nieuwePrijs.toFixed(2);
+    document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+  }else{
+    document.getElementById("prijs").innerHTML = "-";
+  }
+  
 
 }
 
