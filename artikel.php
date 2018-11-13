@@ -41,7 +41,7 @@ hr {
     <!-- De zoekbalk-->
   <div class = navbar-text>
   <div class="search-container">
-  <form action="action_search.php" method="POST">
+  <form action="action_search.php" method="GET">
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
   </form>
@@ -89,10 +89,15 @@ function showDivs(n) {
 }
 
 function setPrice(aantal){
-  var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
-  var nieuwePrijs = aantal * prijs;
-  var nieuwePrijsRound = nieuwePrijs.toFixed(2);
-  document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+  if(aantal >= 1){
+    var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
+    var nieuwePrijs = aantal * prijs;
+    var nieuwePrijsRound = nieuwePrijs.toFixed(2);
+    document.getElementById("prijs").innerHTML = nieuwePrijsRound;
+  }else{
+    document.getElementById("prijs").innerHTML = "-";
+  }
+  
 
 }
 

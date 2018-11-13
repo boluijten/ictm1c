@@ -226,6 +226,9 @@ body {
 .search{
   position: absolute;
 	width: 100vw;
-  top: 20vh;
+  top: 10vh;
 	text-align: center;
+}
+.noUnderline{
+  text-decoration: none;
 }

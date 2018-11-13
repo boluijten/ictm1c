@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 $productIndicator = 0;
   if(isset($_SESSION['cart'])){
     $productIndicator = array_sum($_SESSION['cart']);
@@ -33,7 +34,7 @@ $productIndicator = 0;
     <!-- De zoekbalk-->
   <div class = navbar-text>
   <div class="search-container">
-  <form action="action_search.php" method="POST">
+  <form action="action_search.php" method="GET">
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
   </form>
@@ -43,7 +44,7 @@ $productIndicator = 0;
   <?php
 include("functions.php");
 zoekProduct();
-
+laadCategorieZoekpagina();
 
 ?>
 

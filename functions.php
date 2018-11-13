@@ -37,6 +37,45 @@ function laadCategorie(){
 	}
 
 }
+// Aangeroepen in index.php
+function laadCategorieZoekpagina(){
+	// Verbinden met database
+	include("connect.php");
+	$searchID = htmlspecialchars(mysqli_real_escape_string($connect, filter_input(INPUT_GET, 'search')));
+	// Kijk of er een categorie is geselecteerd
+	$groupName = "";
+	if(filter_input(INPUT_GET, 'categorie') != ""){
+		$groupName = filter_input(INPUT_GET, 'categorie');
+
+	}
+	//Verkrijg alle productgroepen
+	$groupQuery = "SELECT StockGroupName, StockGroupID FROM stockgroups";
+	$resultGroups = mysqli_query($connect, $groupQuery);
+	if (mysqli_num_rows($resultGroups) > 0) {
+	    // Maak categorie menu
+	    echo "<div class=\"vertical-menu\">";
+	    while($row = mysqli_fetch_assoc($resultGroups)) {
+	    	$class = "";
+	    	// Als er een categorie is geselecteerd controlleer of dat deze is
+	    	if($groupName == $row['StockGroupID']){
+	    		// Als deze categorie is geselecteerd is krijgt de link de class 'inUse' van toepassing (zie style.css)
+	    		$class = "inUse";
+	    	}else{
+	    		// In het geval de de klasse niet is geselecteerd krijgt de link de class 'notInUse' (zie style.css)
+	    		$class = "notInUse";
+	    	}
+	    	// Print de rij met de class die eerder is geset
+	    	echo "<a href=\"action_search.php?search=".$searchID."&categorie=".$row['StockGroupID']."\" class='$class'>".$row['StockGroupName']."</a>";
+	    }
+	    if($groupName != ""){
+	    	echo "<a href=\"index.php\" class='clear'>See all</a>";
+	    }
+	    echo "</div>";
+	} else {
+	    echo "No groups yet!<br>";
+	}
+
+}
 
 // Wordt aangeroepen in index.php
 function laadProducten(){
@@ -46,12 +85,12 @@ function laadProducten(){
 	if(filter_input(INPUT_GET, 'categorie') != ""){
 		// Verkrijg ID van de categorie uit de GET en maak een query die alle producren verkrijgt met dat speciale categorie ID
 		$groupID = filter_input(INPUT_GET, 'categorie');
-		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupName, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) JOIN stockgroups USING(StockGroupID) WHERE StockGroupID = ".$groupID." GROUP BY StockItemID";
+		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupName, StockGroupID, Photo FROM stockitems JOIN stockitemstockgroups USING(StockItemID) JOIN stockgroups USING(StockGroupID) WHERE StockGroupID = ".$groupID." GROUP BY StockItemID";
 		// Sla de naam van de groep op uit de GET
 		$groupName = filter_input(INPUT_GET, 'naamCategorie');
 	}else{
 		// In het geval dat er geen categorie is geselecteerd alle producten laden
-		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) GROUP BY StockItemID";
+		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID, Photo FROM stockitems JOIN stockitemstockgroups USING(StockItemID) GROUP BY StockItemID";
 	}
 	// Voer de groupQuery uit
 	$resultGroups = mysqli_query($connect, $groupQuery);
@@ -63,7 +102,11 @@ function laadProducten(){
 	    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'>";
 	    	echo "<div class=\"grid-item\">";
 	    	echo "<h3>".$row['StockItemName']."</h3>";
-	    	echo "<img src='assets/geen.jpg'>";
+	    	if($row['Photo'] != ""){
+	    		echo "<img src='data:image/jpeg;base64,".base64_encode( $row['Photo'] )."'>";
+	    	}else{
+	    		echo "<img src='assets/geen.jpg'>";
+	    	}
 	    	echo "<p>".$row['MarketingComments']."</p>";
 	    	echo "</div>";
 	    	echo "</a>";
@@ -79,17 +122,29 @@ function zoekProduct(){
 	// Verbinden met database
 	include("connect.php");
 	// Verkrijg de zoekterm
-	$searchID = filter_input(INPUT_POST, 'search');
+	$searchID = htmlspecialchars(mysqli_real_escape_string($connect, filter_input(INPUT_GET, 'search')));
+	// Zoekterm zonder escape string voor weergeven op pagina
+	$searchHTML = htmlspecialchars(filter_input(INPUT_GET, 'search'));
+	$categorieID = htmlspecialchars(filter_input(INPUT_GET, 'categorie'));
+
+	$onCategory = false;
 	if($searchID != ""){
-			// Zoek in de database naar producten die de zoekterm in de naam hebben
-		$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID";
+
+		if($categorieID != ""){
+			$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE SearchDetails LIKE '%$searchID%' AND StockGroupID = $categorieID GROUP BY StockItemID";
+			$onCategory = true;
+		}else{
+			$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE SearchDetails LIKE '%$searchID%' GROUP BY StockItemID";
+		}
+		// Zoek in de database naar producten die de zoekterm in de naam hebben
+		
 
 		// Haal naam id en comments uit de database
 		$resultSearch = mysqli_query($connect, $searchQuery);
 		// Check of er data beschikbaar is:
 		if (mysqli_num_rows($resultSearch) > 0) {
-			echo "<div class='search'><h2>Resultaten voor \"$searchID\"</h2></div>";
-		    echo "<div class=\"grid-container-seach\">";
+			echo "<div class='search'><h2>Resultaten voor \"".htmlentities($searchHTML)."\"</h2></div>";
+		    echo "<div class=\"grid-container\">";
 		    // Voor elk gevangen resultaat een productweergave printen
 		    while($row = mysqli_fetch_assoc($resultSearch)) {
 		    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'>";
@@ -102,32 +157,16 @@ function zoekProduct(){
 		    }
 		    echo "</div>";
 		} else {
-		    echo "<div class='geenProducten'>Nog geen producten met de zoekterm $searchID!</div>";
+			if($onCategory){
+				echo "<div class='geenProducten'>Nog geen producten met de zoekterm \"$searchID\" in this category!</div>";
+			}else{
+				echo "<div class='geenProducten'>Nog geen producten met de zoekterm \"$searchID\"!</div>";
+			}
+		    
 		}
 	}else{
-			// Zoek in de database naar producten die de zoekterm in de naam hebben
-		$searchQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE SearchDetails GROUP BY StockItemID";
+		header("location: index.php");
 
-		// Haal naam id en comments uit de database
-		$resultSearch = mysqli_query($connect, $searchQuery);
-		// Check of er data beschikbaar is:
-		if (mysqli_num_rows($resultSearch) > 0) {
-			echo "<div class='search'><h2>Geen zoekterm ingevuld!</h2></div>";
-		    echo "<div class=\"grid-container-seach\">";
-		    // Voor elk gevangen resultaat een productweergave printen
-		    while($row = mysqli_fetch_assoc($resultSearch)) {
-		    	echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'>";
-		    	echo "<div class=\"grid-item\">";
-		    	echo "<h3>".$row['StockItemName']."</h3>";
-		    	echo "<img src='assets/geen.jpg'>";
-		    	echo "<p>".$row['MarketingComments']."</p>";
-		    	echo "</div>";
-		    	echo "</a>";
-		    }
-		    echo "</div>";
-		} else {
-		    echo "<div class='geenProducten'>Nog geen producten met de zoekterm $searchID!</div>";
-		}
 	}
 	
 
@@ -139,6 +178,7 @@ function laadProductpagina(){
 	include("connect.php");
 	// Verkrijg de zoekterm
 	$artikelID = filter_input(INPUT_GET, 'artikel');
+
 	// Zoek in de database naar producten die overeen komen met het geselecteerde artikel
 	// JOIN stockitemholdings USING('StockItemID')
 	// , QuantityOnHand
@@ -162,18 +202,19 @@ function laadProductpagina(){
 		  				<img class=\"mySlides\" src=\"assets/artikelpag/russianbomb3.jpg\" style=\"width:300px; height:250px; display:none\">
 		  			</div></div>";
 
-		  		echo "<div class=\"grid-item-artikel-ondertitel\"><div class=\"prijspaneel\">";
-		  		if($row['IsChillerStock'] == 1){
-		  			echo "<p>Gekoeld product!</p>";
-		  		}
-				echo "<form method='post' action='addToCart.php'>
-	  					<h2>€<span id='prijs'>".$row['UnitPrice']."</span></h2>
-	  					<input  type=\"number\" name=\"aantal\" min=\"1\" max=\"99\" value='1' onchange='setPrice(this.value)'>
-	  					<span style='display: none;' id='prijsBegin'>".$row['UnitPrice']."</span>
-	  					<input type='text' style='display: none;' name='artikelID' value='".$row['StockItemID']."'>
-	  					<input type=\"image\" src=\"assets/artikelpag/winkelmandjegijs.png\" style=\"width:auto; height:40px; position:relative; \" align=\"middle\" border=\"0\" alt=\"Submit\" />
-	  					<p>Only ".number_format($row['QuantityOnHand'], 0, ',', '.')." left in stock!</p>
-	  				</form> </div></div></div>" ;
+						echo "<div class=\"grid-item-artikel-ondertitel\"><div class=\"prijspaneel\">";
+				  		if($row['IsChillerStock'] == 1){
+				  			echo "<p>Gekoeld product!</p>";
+				  		}
+						echo "<form method='post' action='addToCart.php'>
+			  					<h2>&euro;<span id='prijs'>".$row['UnitPrice']."</span></h2>
+			  					<input  type=\"number\" name=\"aantal\" min=\"1\" max=\"99\" value='1' onchange='setPrice(this.value)'>
+			  					<span style='display: none;' id='prijsBegin'>".$row['UnitPrice']."</span>
+			  					<input type='text' style='display: none;' name='artikelID' value='".$row['StockItemID']."'>
+			  					<input type=\"image\" src=\"assets/artikelpag/winkelmandjegijs.png\" style=\"width:auto; height:40px; position:relative; \" align=\"middle\" border=\"0\" alt=\"Submit\" />
+			  					<p>Only ".number_format($row['QuantityOnHand'], 0, ',', '.')." left in stock!</p>
+			  				</form> </div></div></div>" ;
+
 
 	  			echo "<hr>
 					  <!-- SlideShow Van De Afbeeldingen -->
@@ -205,17 +246,23 @@ function RandomProduct(){
     include("connect.php");
     $groupID = filter_input(INPUT_GET, 'group');
     $itemID = filter_input(INPUT_GET, 'artikel');
-    $sql = "SELECT StockItemName, StockGroupID, UnitPrice FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = $groupID ORDER BY rand(), StockItemName ASC LIMIT 6";
+    $sql = "SELECT StockItemName, StockGroupID, StockItemID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) WHERE StockGroupID = $groupID ORDER BY rand(), StockItemName ASC LIMIT 6";
     $resultAanbevolen = mysqli_query($connect, $sql);
     if(mysqli_num_rows($resultAanbevolen) > 0){
         while($row = mysqli_fetch_assoc($resultAanbevolen)){
-            echo "<div class=\"grid-item-artikel\">
-                      <p>".$row['StockItemName']."</p>
-                      <p>".$row['UnitPrice']."</p>
-                    </div>";
+            echo "<a href='artikel.php?artikel=".$row['StockItemID']."&group=".$row['StockGroupID']."'><div class=\"grid-item-artikel-voorgesteld\">
+											<img src='assets/testproduct.png'>
+                      <p >".$row['StockItemName']."</p>
+
+                    </div></a>";
         }
     }
 }
+
+
+
+
+
 
 
 

@@ -35,7 +35,7 @@
     <!-- De zoekbalk-->
   <div class = navbar-text>
   <div class="search-container">
-  <form action="action_search.php" method="POST">
+  <form action="action_search.php" method="GET">
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
   </form>

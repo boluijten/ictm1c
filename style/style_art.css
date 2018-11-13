@@ -68,6 +68,32 @@ border: 5px solid rgba(0, 174, 239, 0.8);
   transition: 0.3s;
 }
 
+.grid-item-artikel-voorgesteld {
+  background-color: rgba(120, 120, 120, 0.1);
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s;
+  height:25vh;
+  margin:auto;
+}
+
+.grid-item-artikel-voorgesteld p{
+margin-top: -17vh;
+}
+
+.grid-item-artikel-voorgesteld img{
+position: relative;
+z-index:-10;
+width:100%;
+padding:5px;
+height: 100%;
+}
+
+.grid-item-artikel-voorgesteld:hover{
+transform: scale(1.05);
+}
+
 .grid-item-Voorgesteldeproducten {
   padding: 20px;
   font-size: 15px;
@@ -133,7 +159,4 @@ border: 5px solid rgba(0, 174, 239, 0.8);
   font-size: 15px;
   text-align: left;
   transition: 0.3s;
-}
-.noDisplay{
-  display: none;
 }

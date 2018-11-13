@@ -43,7 +43,7 @@ hr {
     <!-- De zoekbalk-->
   <div class = navbar-text>
   <div class="search-container">
-  <form action="action_search.php" method="POST">
+  <form action="action_search.php" method="GET">
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
   </form>
@@ -58,7 +58,6 @@ hr {
 <div class="winkelvak">
 <div class="winkelvak2">
 <!-- 1 Item in het winkelvak-->
-
 <?php
 
   function verkrijgWinkelwagen(){
@@ -71,11 +70,12 @@ hr {
           if(mysqli_num_rows($resultGetInfo) > 0){
             while($row = mysqli_fetch_assoc($resultGetInfo)){
                 echo "<div class=\"winkelvak-item\">
+                
                 <form method='post'>
                 <!-- Text -->
-                ".$row['StockItemName']."  - &euro;".$row['UnitPrice'];
+                ".$row['StockItemName']."  - &euro;".$row['UnitPrice']."<sub>/piece</sub> ";
                 if($aantal > 1){
-                  echo " - &euro;". number_format($row['UnitPrice'] * $aantal, 2, ',', '.');
+                  echo " - &euro;". number_format($row['UnitPrice'] * $aantal, 2, ',', '.')."<sub> totaal</sub>";
 
                 }
                 echo "<!-- De delete button -->
@@ -85,6 +85,9 @@ hr {
                 <input type='hidden' name='itemIDSend' value='$itemID'>
                 <input type='hidden' name='changeValue'/>
                 </form>
+
+                
+
                 <form method='post'>
 	                <button type='submit' value=\"Submit\" id=\"seleteItem\" name='deleteItem' style=\"float:right; height:28px;\" />
 	                  <i class=\"fas fa-trash-alt\"></i>
@@ -95,6 +98,7 @@ hr {
                 <hr>
                 </div>";
             }
+
           }
       }
     }else{
@@ -113,7 +117,10 @@ hr {
           $resultGetInfo = mysqli_query($connect, $sql);
           if(mysqli_num_rows($resultGetInfo) > 0){
             while($row = mysqli_fetch_assoc($resultGetInfo)){
+              if($aantal > 0){
+
                 $totaalprijs += $row['UnitPrice'] * $aantal;
+              }
             }
           }
       }
@@ -130,8 +137,14 @@ hr {
   if(isset($_POST['aantal'])){
   	$aantal = filter_input(INPUT_POST, 'aantal');
   	$itemID = filter_input(INPUT_POST, 'itemIDSend');
-  	$_SESSION['cart'][$itemID] = $aantal;
-  	header('location: winkelwagen.php');
+    if($aantal > 0){
+      $_SESSION['cart'][$itemID] = $aantal;
+      header('location: winkelwagen.php');
+    }else{
+      unset($_SESSION['cart'][$itemID]);
+      header('location: winkelwagen.php');
+    }
+  	
   }
   if(isset($_POST['deleteItem'])){
   	$itemID = filter_input(INPUT_POST, 'itemIDSend');
@@ -150,8 +163,8 @@ hr {
 
 </div>
 <div class="winkelvak-samenvatting">
-<p style="font-size: 15px;margin-top:0; padding-left: 5px;float:left; position:relative;">totale prijs: <?php echo "&euro;".totaalPrijs(); ?></p>
-<p style="font-size: 15px;margin-top:0; padding-right: 5px;float:right; position:relative;">totaal aantal: <?php echo $productIndicator; ?></p>
+<p style="font-size: 15px;margin-top:0; padding-left: 5px;float:right; position:relative;">totale prijs: <?php echo "&euro;".totaalPrijs(); ?></p>
+<p style="font-size: 15px;margin-top:0; padding-right: 5px;float:left; position:relative;">totaal aantal: <?php echo $productIndicator; ?></p>
 </div>
 </div>
 <!-- De Knop om verder te gaan met winkelen -->
@@ -162,7 +175,7 @@ hr {
 <button onclick="location.href='afrekenen.php';"   style="float:right;"><i class="fas fa-forward"></i> Afrekenen</button>
 </div>
 <script>
-function goBack() {
+function goBack()  {
     window.history.back();
 }
 </script>
