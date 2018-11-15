@@ -166,7 +166,12 @@ body {
   transform: scale(1.05);
 }
 .grid-item img{
-  width: 10vw;
+  width: 80%;
+  display: inline-block;
+  position: center;
+  top: 10%;
+  border: 2px solid black;
+  border-radius: 40px;
 }
 
 .dropdown {
