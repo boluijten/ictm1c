@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-include("header.php");
 ?>
 <html>
 
@@ -151,5 +150,9 @@ function goBack() {
 
 
 </body>
+<?php
 
+include("header.php");
+
+?>
 </html>

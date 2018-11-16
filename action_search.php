@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-include("header.php");
 ?>
 <html>
 <head>
@@ -29,5 +28,9 @@ laadCategorieZoekpagina();
 
 
 </body>
+<?php
 
+include("header.php");
+
+?>
 </html>

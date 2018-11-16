@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("functions.php");
-include("header.php");
+
 ?>
 <html>
 
@@ -92,7 +92,11 @@ function setPrice(aantal){
 </div>
 </div>
 
+<?php
 
+include("header.php");
+
+?>
 </body>
 
 </html>
