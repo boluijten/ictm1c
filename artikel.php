@@ -1,11 +1,7 @@
 <?php
 session_start();
-$productIndicator = 0;
-  if(isset($_SESSION['cart'])){
-    $productIndicator = array_sum($_SESSION['cart']);
-  }
 include("functions.php");
-
+include("header.php");
 ?>
 <html>
 
@@ -27,27 +23,6 @@ hr {
 </style>
 
 <body>
-  <!-- Top Navigatie Balk -->
-  <div class="navbar">
- <a href="index.php"><img style="width:auto; height:80px;" src="assets/logo.png"></a>
-
-  <div class = navbar-text>
-    <a href="winkelwagen.php"><img style="width:auto; height:25px;" src="assets/winkelmandje.png"><span class="badge"><?php echo $productIndicator; ?></span></a></li></a>
-</div>
-  <div class = navbar-text>
-  <a style="text-decoration: none;" href="#news">Inloggen</a>
-</div>
-
-    <!-- De zoekbalk-->
-  <div class = navbar-text>
-  <div class="search-container">
-  <form action="action_search.php" method="GET">
-    <input type="text" placeholder="Search.." name="search">
-    <button type="submit"><i style="height:25px; width:auto;"class="fa fa-search"></i></button>
-  </form>
-  </div>
-</div>
-</div>
 
 <!-- De Div Waarin Het Product Zit -->
 <!-- De container van de hele pagina-->
@@ -89,15 +64,10 @@ function showDivs(n) {
 }
 
 function setPrice(aantal){
-  if(aantal >= 1){
-    var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
-    var nieuwePrijs = aantal * prijs;
-    var nieuwePrijsRound = nieuwePrijs.toFixed(2);
-    document.getElementById("prijs").innerHTML = nieuwePrijsRound;
-  }else{
-    document.getElementById("prijs").innerHTML = "-";
-  }
-  
+  var prijs = parseFloat(document.getElementById('prijsBegin').innerHTML);
+  var nieuwePrijs = aantal * prijs;
+  var nieuwePrijsRound = nieuwePrijs.toFixed(2);
+  document.getElementById("prijs").innerHTML = nieuwePrijsRound;
 
 }
 

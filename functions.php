@@ -144,6 +144,7 @@ function zoekProduct(){
 		// Check of er data beschikbaar is:
 		if (mysqli_num_rows($resultSearch) > 0) {
 			echo "<div class='search'><h2>Resultaten voor \"".htmlentities($searchHTML)."\"</h2></div>";
+			echo "<br><br><br><br><br><br><br><br><br>";
 		    echo "<div class=\"grid-container\">";
 		    // Voor elk gevangen resultaat een productweergave printen
 		    while($row = mysqli_fetch_assoc($resultSearch)) {
@@ -269,7 +270,22 @@ function RandomProduct(){
 
 
 
-
+function laadDeals(){
+	include("connect.php");
+	$query = "SELECT * FROM discount LEFT JOIN stockitems USING(stockItemID)";
+	$resultSpecialdeal = mysqli_query($connect, $query);
+    if(mysqli_num_rows($resultSpecialdeal) > 0){
+        while($row = mysqli_fetch_assoc($resultSpecialdeal)){
+        	$nieuwprijs = "";
+           echo "<div class=\"aanbieding-product\">
+				    <p style=\"float:left;\">".$row['StockItemName']."</p>
+				    <p style=\"float:right\">".number_format($row['UnitPrice'] * ((100-$row['discountPercentage'])/100), 2, ',', '.')."</p>
+				    <sub><p style=\"float:right;text-decoration: line-through;\">".$row['UnitPrice']."  </p></sub>
+				    <p>".$row['discountPercentage']."% korting! </p>
+				  </div>";
+        }
+    }
+}
 
 
 
