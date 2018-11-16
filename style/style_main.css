@@ -233,3 +233,8 @@ body {
 .sorteerkolom {
 	float:right;
 }
+.price{
+	font-weight: bold;
+	font-family: fantasy;
+	color: rgba(0, 174, 239, 0.8);
+}

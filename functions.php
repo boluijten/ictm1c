@@ -46,12 +46,12 @@ function laadProducten(){
 	if(filter_input(INPUT_GET, 'categorie') != ""){
 		// Verkrijg ID van de categorie uit de GET en maak een query die alle producren verkrijgt met dat speciale categorie ID
 		$groupID = filter_input(INPUT_GET, 'categorie');
-		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupName, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) JOIN stockgroups USING(StockGroupID) WHERE StockGroupID = ".$groupID." GROUP BY StockItemID";
+		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupName, StockGroupID, UnitPrice FROM stockitems JOIN stockitemstockgroups USING(StockItemID) JOIN stockgroups USING(StockGroupID) WHERE StockGroupID = ".$groupID." GROUP BY StockItemID";
 		// Sla de naam van de groep op uit de GET
 		$groupName = filter_input(INPUT_GET, 'naamCategorie');
 	}else{
 		// In het geval dat er geen categorie is geselecteerd alle producten laden
-		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) GROUP BY StockItemID";
+		$groupQuery = "SELECT StockItemName, StockItemID, MarketingComments, UnitPrice, StockGroupID FROM stockitems JOIN stockitemstockgroups USING(StockItemID) GROUP BY StockItemID";
 	}
 	// Voer de groupQuery uit
 	$resultGroups = mysqli_query($connect, $groupQuery);
@@ -66,6 +66,7 @@ function laadProducten(){
 	    	echo "<h3>".$row['StockItemName']."</h3>";
 	    	echo "<img src='assets/geen.jpg'>";
 	    	echo "<p>".$row['MarketingComments']."</p>";
+				echo "<p class='price'>".$row['UnitPrice']."</p>";
 	    	echo "</div>";
 	    	echo "</a>";
 	    	$load++;
