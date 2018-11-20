@@ -15,8 +15,18 @@ echo "
   <div class = navbar-text>
   <a href=\"winkelwagen.php\"><img style=\"width:auto; height:25px;\" src=\"assets/winkelmandje.png\"><span class=\"badge\">$productIndicator</span></a></li></a>
 </div>
-  <div class = navbar-text>
-  <a style=\"text-decoration: none;\" href=\"#news\">Inloggen</a>
+  <div class = navbar-text>";
+
+if(isset($_SESSION['naam'])){
+  echo "<a style=\"text-decoration: none;\" href=\"user.php\">Hallo, ".$_SESSION['naam']."</a>";
+}else{
+  echo "<a style=\"text-decoration: none;\" href=\"login_register.php\">Inloggen</a>";
+}
+
+  
+
+
+echo "
 </div>
 
     <!-- De zoekbalk-->
