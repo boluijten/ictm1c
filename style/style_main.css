@@ -3,6 +3,7 @@ body{
 	font-family: sans-serif;
 	font-weight: lighter;
 	background-color: #e8e8e8;
+  padding-top: 10vh;
 }
 h1{
 	font-weight: lighter;
@@ -26,9 +27,12 @@ body {
 
 
 .vertical-menu {
-  position: fixed;
+
+	position: -webkit-sticky;
+position: sticky;
     width: 200px;
       top: 20%;
+			margin-top:-70vh;
     font-size: 13px;
     border: 5px solid rgba(0, 174, 239, 0.8);
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -180,16 +184,14 @@ body {
   text-align: center;
   transition: 0.3s;
   width:60%;
-	align-self: center;
-	margin-top: -15vh;
-	margin-left: 8vw;
+	left:29%;
+	margin-top:10vh;
 	text-decoration: none;
-	z-index: 3;
-	position:absolute;
+	position: absolute;
 }
 
 .aanbieding-product:hover {
-	transform: scale(1.2);
+	transform: scale(1.1);
 }
 
 .uitgelichteproducten {
@@ -202,6 +204,7 @@ body {
   height: 30vh;
 	text-decoration: none;
 	align-items: center;
+	z-index: -1000;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -273,17 +276,15 @@ body {
 .search{
   position: absolute;
 	width: 100vw;
-  top: 20vh;
+  top: 10vh;
 	text-align: center;
 }
 
 canvas {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  width: 100%;
   margin: 0;
-	z-index: 1;
-	position:inherit;
-	height: inherit;
-	margin-top: -9vh;
+	z-index: -10000;
+	position: relative;
+  width: inherit;
+  height: inherit;
+
 }

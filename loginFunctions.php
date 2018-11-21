@@ -13,7 +13,7 @@ session_start();
 		$password = mysqli_real_escape_string($connect, filter_input(INPUT_POST,'passwordRegisterTXT'));
 		$passwordCheck = mysqli_real_escape_string($connect, filter_input(INPUT_POST,'passwordRetypeRegisterTXT'));
 		if($password == $passwordCheck){
-			
+
 
 			$result = mysqli_query($connect,"SELECT * FROM user WHERE email = '$email'");
 			if (!mysqli_num_rows($result)==0){
@@ -29,7 +29,7 @@ session_start();
 			}
 
 
-			
+
 		}else{
 			echo "Passwords don't match!";
 		}
@@ -40,7 +40,7 @@ session_start();
 		$usernameLogin = mysqli_real_escape_string($connect, filter_input(INPUT_POST, 'emailLoginTXT'));
 		$passwordLogin = mysqli_real_escape_string($connect, filter_input(INPUT_POST, 'passwordLoginTXT'));
 		$result = mysqli_query($connect,"SELECT * FROM user WHERE email = '$usernameLogin'");
-		
+
 		if (mysqli_num_rows($result)==1){
 			$row=mysqli_fetch_row($result);
 			if(password_verify($passwordLogin, $row[9])){
@@ -56,7 +56,7 @@ session_start();
 		}else{
 			echo "Username not found!";
 		}
-		
+
 	}
 
 // Logout system

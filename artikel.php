@@ -1,5 +1,5 @@
 <?php
-session_start();
+ob_start();
 include("functions.php");
 
 ?>
@@ -22,7 +22,7 @@ hr {
 }
 </style>
 
-<body>
+<body onload="currentDiv(1)">
 
 <!-- De Div Waarin Het Product Zit -->
 <!-- De container van de hele pagina-->

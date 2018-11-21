@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 include("connect.php");
 include("loginFunctions.php");
 ?>
@@ -19,20 +18,18 @@ include("loginFunctions.php");
 </style>
 
 <body>
-
-
-    <br>
-    <br>
-    <br>
-    <br>
+<div class="head-form">
+  <div class="login-form">
     <!-- Login form -->
     <form method="POST" >
         <h3>Login</h3>
         <input type="text" name="emailLoginTXT" placeholder="Email" required>
         <input type="password" name="passwordLoginTXT" placeholder="Password" required><br>
         <input type="submit" name="submitLoginBTN" value="Login">
-    
+
     </form>
+  </div>
+  <div class="register-form">
     <!-- Register form -->
     <form method="POST">
         <h3>Register</h3>
@@ -49,11 +46,12 @@ include("loginFunctions.php");
 
         <input type="submit" name="submitRegisterBTN" value="Registreer">
     </form>
-
+</div>
+</div>
 
 
 </body>
-<?php  
+<?php
 include("header.php");
 ?>
 

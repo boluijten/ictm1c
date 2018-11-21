@@ -1,10 +1,11 @@
 <?php
   // Laden van functies uit 'functions.php'
+  session_start();
 ob_start();
  include("functions.php");
 
 
-  
+
 ?>
 <html>
 
@@ -22,27 +23,35 @@ ob_start();
 
 <body>
 
-
+<?php
+laadCategorie();
+?>
  <!-- Uitgelichte Producten -->
 <div class="grid-container2">
+  <button style="z-index:5;top: 32%; position: absolute;" onclick="plusDivs(-1)">&#10094;</button>
+  <button style="margin-left: 76%; top: 32%; z-index:5; position: absolute;" onclick="plusDivs(1)">&#10095;</button>
 <div class="uitgelichteproducten">
-  <p>De nieuwe website, grote aanbiedingen!</p>
   <canvas id="canvas"></canvas>
-  <?php
-    laadDeals();
-  ?>
+  <p style="margin-top:-17%">De nieuwe website, grote aanbiedingen!</p>
 
-  <button style="float:left; margin-top:-13vh; z-index:5; position:relative;" onclick="plusDivs(-1)">&#10094;</button>
-  <button style="float:right; margin-top:-13vh; z-index:5; position:relative;" onclick="plusDivs(1)">&#10095;</button>
+
 </div>
+
+<?php
+  laadDeals();
+?>
+
 </div>
 
 <?php
 
 // Later een terugfunctie door op de geselecteerde categorie te klikken?
-laadCategorie();
 laadProducten();
 ?>
+
+<div class="footer">
+  <p>© Groepje 1 2018/2019 | All Rights Reserved | Contact Us: +31658743610 | WWI@gmail.com</p>
+</div>
 
 <script>
 let W = window.innerWidth;
@@ -164,7 +173,7 @@ function showDivs(n) {
 
 </body>
 
-<?php  
+<?php
 include("header.php");
 ?>
 </html>

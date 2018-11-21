@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $productIndicator = 0;
 if(isset($_SESSION['cart'])){
@@ -23,7 +22,7 @@ if(isset($_SESSION['naam'])){
   echo "<a style=\"text-decoration: none;\" href=\"login_register.php\">Inloggen</a>";
 }
 
-  
+
 
 
 echo "
